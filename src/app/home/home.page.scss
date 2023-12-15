@@ -1,3 +1,10 @@
+ion-toolbar{
+  background-color: var(--ion-color-redware);
+  color: var(--ion-color-redware-contrast);
+}
+ion-title{
+  width: 100%;
+}
 #container {
   text-align: center;
 
@@ -24,4 +31,13 @@
 
 #container a {
   text-decoration: none;
+}
+
+ion-button{
+  --background: var(--ion-color-redware);
+  --background-hover: var(--ion-color-redware);
+  --background-activated: var(--ion-color-redware-shade);
+  --background-focused: var(--ion-color-redware-shade);
+
+  --color: var(--ion-color-redware-contrast);
 }

@@ -1,72 +1,82 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="redware">
     <ion-title>Registro de Tomas Fisicas </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-searchbar animated="true" [(ngModel)]="scannedBarcodeValue"></ion-searchbar>
-  <form>
+  <ion-searchbar animated="true" [(ngModel)]="scannedBarcodeValue" (ngModelChange)="onFilterBoxChanged()"></ion-searchbar>
+  <form [formGroup]="productForm" (ngSubmit)="saveNewStock()">
     <ion-list>
       <ion-list-header>
-        <ion-label>
+        <ion-label position="floating">
             Registro de Tomas Fisicas GalixSoft
         </ion-label>
       </ion-list-header>
       <ion-item>
-        <ion-label>
+        <ion-label position="floating">
           Producto
         </ion-label>
         <ion-input
         [disabled]="true"
+        formControlName="productName"
         >
 
         </ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>
+        <ion-label position="floating">
           Código
         </ion-label>
         <ion-input
           [disabled]="true"
+          formControlName="productCode"
         >
 
         </ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>
+        <ion-label position="floating">
           Stock Actual
         </ion-label>
         <ion-input
           [disabled]="true"
+          formControlName="productStock"
+          type="number"
         >
 
         </ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>
+        <ion-label position="floating">
           Nuevo Stock
         </ion-label>
-        <ion-input>
+        <ion-input formControlName="productNewStock"
+                   type="number"
+        >
 
         </ion-input>
       </ion-item>
     </ion-list>
-    <ion-button expand="full" type="submit">
+    <ion-button expand="full" type="submit" >
         Guardar Toma Física
+
     </ion-button>
+
   </form>
 
 
-  <ion-list>
-    <ion-item *ngFor="let barcode of barcodes">
-      <ion-label position="stacked">{{ barcode.format }}</ion-label>
-      <ion-input type="text" [value]="barcode.rawValue"></ion-input>
-    </ion-item>
-  </ion-list>
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
     <ion-fab-button (click)="scan()" [disabled]="!isSupported">
       <ion-icon name="scan"></ion-icon>
     </ion-fab-button>
   </ion-fab>
+
+
+  <ion-footer>
+    <ion-toolbar>
+      <ion-title><strong>Desarrollado por REDWARE</strong>+(593)997541038</ion-title>
+
+    </ion-toolbar>
+  </ion-footer>
 </ion-content>
