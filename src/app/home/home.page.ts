@@ -10,6 +10,8 @@ import { AlertController } from '@ionic/angular';
 export class HomePage implements OnInit {
   isSupported = false;
   barcodes: Barcode[] = [];
+  scannedBarcodeValue: string = '';
+
 
   constructor(private alertController: AlertController) {}
 
@@ -27,6 +29,7 @@ export class HomePage implements OnInit {
     }
     const { barcodes } = await BarcodeScanner.scan();
     this.barcodes.push(...barcodes);
+    this.scannedBarcodeValue = barcodes.length > 0 ? barcodes[0].rawValue : '';
   }
 
   async requestPermissions(): Promise<boolean> {
